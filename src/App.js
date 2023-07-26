@@ -8,7 +8,9 @@ import Login from './components/Login';
 const App = () => {
   return (
     <>
+    <div><h1>Welcome to your Personal Transaction Tracker</h1></div>
     <div className="App">
+      
     <Router>
       <Routes>
         <Route path="/" element={<Signin />} />

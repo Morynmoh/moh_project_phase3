@@ -9,7 +9,8 @@ import TotalBudgetCard from "./TotalBudgetCard"
 import { useState } from "react"
 import { UNCATEGORIZED_BUDGET_ID, useBudgets } from "../contexts/BudgetsContext"
 import './Applic.css';
-
+import ExpenseForm from "./ExpenseForm";
+import AddCategory from "./AddCategory";
 
 function Home() {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false)
@@ -84,6 +85,14 @@ function Home() {
         budgetId={viewExpensesModalBudgetId}
         handleClose={() => setViewExpensesModalBudgetId()}
       />
+      <div>
+      <h1>Category Form</h1>
+      <AddCategory />
+    </div>
+      <div>
+      <h1>Expense Form</h1>
+      <ExpenseForm />
+    </div>
     </>
   )
 }

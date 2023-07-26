@@ -18,16 +18,17 @@ const Signin = () => {
     }
   
     try {
-      const response = await axios.post('http://localhost:9292/users', {
+      const response = await axios.post('http://localhost:9292/signin', {
         user_name: userName,
         password: password,
       });
-      // If the user is created successfully, you can handle the response here
+      
       console.log(response.data);
+      alert("User created successfully");
       navigate('/Login');
     } catch (error) {
-      // If there's an error, you can handle it here
       console.error(error);
+      alert("User not created succesfully");
     }
   };
 
@@ -59,7 +60,7 @@ const Signin = () => {
                     <button className='btn'onClick={handleRegister}>Register</button>
                     
                     <h6>If you already have an account, you can Login</h6>
-                    <Link to='/LoginForm' className='btn' >Go To Login</Link>
+                    <Link to='/Login' className='btn'>Go To Login</Link>
                     {/* onClick={() => navigate('/Login')} */}
                     </form>
 

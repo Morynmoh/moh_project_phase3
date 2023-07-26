@@ -19,17 +19,18 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:9292/users/login', {
+      const response = await axios.post('http://localhost:9292/login', {
         user_name: userName,
         password: password,
       });
       // If the user is logged in successfully, you can handle the response here
       console.log(response.data);
+      alert("User found and logged in successfully")
       navigate('/Home');
       // history.push('/Login');
     } catch (error) {
-      // If there's an error, you can handle it here
       console.error(error);
+      alert("User not found")
     }
   };
 
@@ -55,7 +56,7 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     />
                     
-                    <button className='btn'onClick={handleLogin}>Sign In</button>
+                    <button className='btn'onClick={handleLogin}>Log In</button>
                     <h6>If you have not registered</h6>
                     <button className='btn' onClick={() => navigate('/')}>Go To Register</button>
                 </form>
