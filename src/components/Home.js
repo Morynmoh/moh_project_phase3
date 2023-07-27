@@ -4,8 +4,7 @@ import ExpenseForm from "./ExpenseForm";
 import AddCategory from "./AddCategory";
 import TransactionList from "./TransactionList";
 import React, { useEffect } from 'react';
-import TotalExpense from './TotalExpense';
-import TotalExpenses2 from './TotalExpenses2';
+
 
 function Home() {
   const location = useLocation();
