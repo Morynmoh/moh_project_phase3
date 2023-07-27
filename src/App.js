@@ -6,13 +6,10 @@ import Signin from './components/Signin';
 import Login from './components/Login';
 import bgImg from './assets/bckgrnd.png';
 
-
 const App = () => {
   return (
     <>
-    
     <div className="App" style={{ backgroundImage: `url(${bgImg})` }}>
-      
       
     <Router>
       <Routes>
