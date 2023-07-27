@@ -34,9 +34,7 @@ function Home() {
       <h1 style={welcomeStyle}>Welcome <span
       style={{ color: '#B31312', fontWeight: 'bold', fontSize: '24px', animation: 'fadeIn 2s', textTransform: 'capitalize' }}
       >{userName}</span>, to your Transaction Tracker!</h1>
-      {/* <h5>Please 
-        <span style={{ fontSize: '15px', color: '#fff', backgroundColor: '#0E2954' }}>  Add Category  </span> before 
-      <span style={{ fontSize: '15px', color: '#fff', backgroundColor: '#0E2954' }}>  Add Expenses  </span>.</h5> */}
+      
         <div style={columnStyle}>
           
           <AddCategory />
