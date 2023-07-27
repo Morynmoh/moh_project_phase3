@@ -37,7 +37,7 @@ function Home() {
         <ExpenseForm />
       </div>
       <div>
-          <h1>Transaction List</h1>
+          
           <TransactionList />
         </div>
         <div>

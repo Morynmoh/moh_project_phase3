@@ -169,11 +169,11 @@ const ExpenseUpdate = ({ expense, onUpdate }) => {
     };
 
     axios
-      .put(`http://localhost:9292/expenses/${expense.id}`, updatedExpense)
+      .patch(`http://localhost:9292/expenses/${expense.id}`, updatedExpense)
       .then((response) => {
         console.log('Expense updated successfully:', response.data);
-        onUpdate(response.data); // Notify the parent component of the update
-        handleCloseModal(); // Close the modal after successful update
+        onUpdate(response.data); 
+        handleCloseModal(); 
       })
       .catch((error) => {
         console.error('Error updating expense:', error);
