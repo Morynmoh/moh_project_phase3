@@ -5,6 +5,7 @@ import AddCategory from "./AddCategory";
 import TransactionList from "./TransactionList";
 import React, { useEffect } from 'react';
 import TotalExpense from './TotalExpense';
+import TotalExpenses2 from './TotalExpenses2';
 
 function Home() {
   const location = useLocation();
@@ -44,9 +45,12 @@ function Home() {
         <div style={{ width: '100%' }}>
           <TransactionList />
         </div>
-        <div style={{ width: '100%' }}>
+        {/* <div style={{ width: '100%' }}>
           <TotalExpense />
-        </div>
+        </div> */}
+        {/* <div style={{ width: '100%' }}>
+          <TotalExpenses2 />
+        </div> */}
       </div>
     </>
   )

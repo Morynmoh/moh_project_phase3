@@ -61,18 +61,40 @@ const TransactionList = () => {
       });
   };
 
-  const listItemStyle = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    padding: '8px',
-    borderBottom: '1px solid #ccc',
-  };
-
+  
   const buttonStyle = {
     marginLeft: '8px',
     backgroundColor: '#0E2954',
     color: '#fff',
   };
+  
+  
+  const calculateTotalAmount = () => {
+    return expenses.reduce((total, expense) => total + parseFloat(expense.amount), 0);
+  };
+
+  const formatTotalAmount = (amount) => {
+    return amount.toLocaleString(undefined, { minimumFractionDigits: 2 });
+  };
+
+  const listItemStyle = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    padding: '12px', // Increase padding to create more space
+    
+  };
+
+  const listItemStyle1 = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    padding: '12px', // Increase padding to create more space
+    borderBottom: '1px solid #ccc',
+    fontSize: '20px', // Increase font size
+    backgroundColor: '#0E2954', // Background color
+    color: '#fff', // Text color
+    width: '100%', // Expand to full width
+  };
+
 
   return (
     <div>
@@ -108,6 +130,14 @@ const TransactionList = () => {
             </span>
           </li>
         ))}
+        {/* Total row */}
+        <li style={listItemStyle1}>
+          <span></span>
+          <span><strong>Total:</strong></span>
+          <span>KES <strong>{formatTotalAmount(calculateTotalAmount())}</strong></span>
+          <span></span>
+        </li>
+
       </ul>
 
       {/* Render the ExpenseForm component */}
