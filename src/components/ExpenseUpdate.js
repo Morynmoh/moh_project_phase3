@@ -131,9 +131,11 @@
 // };
 
 // export default ExpenseUpdate;
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap';
+import './expense.css'; // Import the CSS file with styles for the component
 
 const ExpenseUpdate = ({ expense, onUpdate }) => {
   const [showModal, setShowModal] = useState(false);
@@ -182,45 +184,52 @@ const ExpenseUpdate = ({ expense, onUpdate }) => {
 
   return (
     <div>
-      <Button onClick={handleShowModal}>Update</Button>
+      <Button onClick={handleShowModal} className="update-button">
+        Update
+      </Button>
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title>Update Expense</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form onSubmit={handleSubmit}>
-            <div>
+          <form onSubmit={handleSubmit} className="expense-form">
+            <div className="form-group">
               <label htmlFor="description">Description:</label>
               <input
                 type="text"
                 id="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
+                className="form-control"
               />
             </div>
-            <div>
+            <div className="form-group">
               <label htmlFor="date">Date:</label>
               <input
                 type="date"
                 id="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
+                className="form-control"
               />
             </div>
-            <div>
+            <div className="form-group">
               <label htmlFor="amount">Amount:</label>
               <input
                 type="number"
                 id="amount"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
+                className="form-control"
               />
             </div>
-            <button type="submit">Update Expense</button>
+            <button type="submit" className="btn btn-primary" style={{ backgroundColor: '#0E2954', color: '#fff' }}>
+              Update Expense
+            </button>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>
+          <Button variant="secondary" onClick={handleCloseModal} style={{ backgroundColor: '#0E2954', color: '#fff' }}>
             Close
           </Button>
         </Modal.Footer>
@@ -230,4 +239,5 @@ const ExpenseUpdate = ({ expense, onUpdate }) => {
 };
 
 export default ExpenseUpdate;
+
 

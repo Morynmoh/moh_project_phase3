@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { useBudgets } from '../contexts/BudgetsContext';
 
 const TotalExpense = () => {
@@ -25,7 +25,6 @@ const TotalExpense = () => {
 };
 
 export default TotalExpense;
-
 
 // const TotalExpense = ({ expenses }) => {
 //   // Calculate the total expense by summing up the amounts from all expenses

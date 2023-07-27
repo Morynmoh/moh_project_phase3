@@ -1,6 +1,4 @@
-import { Button, Stack } from "react-bootstrap";
 import { useLocation } from 'react-router-dom';
-import { UNCATEGORIZED_BUDGET_ID, useBudgets } from "../contexts/BudgetsContext";
 import './home.css';
 import ExpenseForm from "./ExpenseForm";
 import AddCategory from "./AddCategory";
@@ -33,7 +31,9 @@ function Home() {
   return (
     <>
       <div style={containerStyle}>
-      <h1 style={welcomeStyle}>Welcome {userName}, to your Transaction Tracker!</h1>
+      <h1 style={welcomeStyle}>Welcome <span
+      style={{ color: '#B31312', fontWeight: 'bold', fontSize: '24px', animation: 'fadeIn 2s', textTransform: 'capitalize' }}
+      >{userName}</span>, to your Transaction Tracker!</h1>
         <div style={columnStyle}>
           
           <AddCategory />

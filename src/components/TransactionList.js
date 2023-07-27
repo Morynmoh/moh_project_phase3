@@ -5,10 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import ExpenseUpdate from './ExpenseUpdate';
+import ExpenseForm from './ExpenseForm'; // Import the ExpenseForm component
 
 const TransactionList = () => {
   const [expenses, setExpenses] = useState([]);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const [showAddExpenseModal, setShowAddExpenseModal] = useState(false); // State for showing the add expense modal
 
   useEffect(() => {
     fetchExpenses();
@@ -45,6 +47,20 @@ const TransactionList = () => {
     setShowUpdateModal(false);
   };
 
+  // Function to handle adding a new expense to the list
+  const handleAddExpense = (newExpense) => {
+    axios
+      .post('http://localhost:9292/expenses', newExpense)
+      .then((response) => {
+        console.log('Expense added successfully:', response.data);
+        fetchExpenses(); // Fetch the updated list of expenses after adding
+        setShowAddExpenseModal(false); // Close the modal after successful add
+      })
+      .catch((error) => {
+        console.error('Error adding expense:', error);
+      });
+  };
+
   const listItemStyle = {
     display: 'flex',
     justifyContent: 'space-between',
@@ -61,24 +77,22 @@ const TransactionList = () => {
   return (
     <div>
       <h2>Transactions List</h2>
+      <Button onClick={() => setShowAddExpenseModal(true)} style={{ backgroundColor: '#0E2954', color: '#fff' }}>
+        Add Expense
+      </Button>
+
       <ul style={{ listStyleType: 'none', padding: 0, margin: 0 }}>
         {expenses.map((expense) => (
           <li key={expense.id} style={listItemStyle}>
             <span>{expense.date}</span>
             <span>{expense.description}</span>
             <span>{expense.amount}</span>
-            
+
             <span>
-              <Button  onClick={() => handleDelete(expense.id)} 
-              style={{ backgroundColor: '#0E2954', color: '#fff' }}
-              > 
-              {/* style={buttonStyle} variant="danger" */}
+              <Button onClick={() => handleDelete(expense.id)} style={{ backgroundColor: '#0E2954', color: '#fff' }}>
                 <FontAwesomeIcon icon={faTrashAlt} />
               </Button>
-              <Button  onClick={() => setShowUpdateModal(true)} 
-              style={{ backgroundColor: '#0E2954', color: '#fff' }}
-              >
-                {/* style={buttonStyle}variant="primary" */}
+              <Button onClick={() => setShowUpdateModal(true)} style={{ backgroundColor: '#0E2954', color: '#fff' }}>
                 <FontAwesomeIcon icon={faRefresh} />
               </Button>
               {showUpdateModal && (
@@ -95,8 +109,15 @@ const TransactionList = () => {
           </li>
         ))}
       </ul>
+
+      {/* Render the ExpenseForm component */}
+      <ExpenseForm onAddExpense={handleAddExpense} show={showAddExpenseModal} onHide={() => setShowAddExpenseModal(false)} />
     </div>
   );
 };
 
 export default TransactionList;
+
+
+
+
