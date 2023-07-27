@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import './home.css';
+// import './home.css';
 import ExpenseForm from "./ExpenseForm";
 import AddCategory from "./AddCategory";
 import TransactionList from "./TransactionList";
@@ -34,7 +34,9 @@ function Home() {
       <h1 style={welcomeStyle}>Welcome <span
       style={{ color: '#B31312', fontWeight: 'bold', fontSize: '24px', animation: 'fadeIn 2s', textTransform: 'capitalize' }}
       >{userName}</span>, to your Transaction Tracker!</h1>
-      <h5>Please Add Categories before adding Expenses.</h5>
+      {/* <h5>Please 
+        <span style={{ fontSize: '15px', color: '#fff', backgroundColor: '#0E2954' }}>  Add Category  </span> before 
+      <span style={{ fontSize: '15px', color: '#fff', backgroundColor: '#0E2954' }}>  Add Expenses  </span>.</h5> */}
         <div style={columnStyle}>
           
           <AddCategory />

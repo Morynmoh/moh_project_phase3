@@ -99,7 +99,8 @@ const TransactionList = () => {
 
   return (
     <div>
-      <h2>Transactions List</h2>
+      <h2 style={{ fontSize: '20px', fontWeight: 'bold', textDecoration: 'underline' }}>Transactions List</h2>
+
       <Button onClick={() => setShowAddExpenseModal(true)} style={{ backgroundColor: '#0E2954', color: '#fff' }}>
         Add Expense
       </Button>

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap';
@@ -9,7 +8,6 @@ const ExpenseUpdate = ({ expense, onUpdate }) => {
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
   const [amount, setAmount] = useState('');
-
 
   useEffect(() => {
     setDescription(expense.description);
