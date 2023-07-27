@@ -4,7 +4,7 @@ import bgImg from '../assets/mediamodifier-I3HPUolh5hA-unsplash.jpg';
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './Applic.css';
+
 
 
 const Signin = () => {
