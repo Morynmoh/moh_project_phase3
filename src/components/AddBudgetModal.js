@@ -15,7 +15,6 @@ export default function AddBudgetModal({ show, handleClose }) {
       })
     };
   
-    // Send the POST request to the 'categories' endpoint using axios
     axios.post("http://localhost:9292/categories", formData)
       .then((response) => {
         console.log("Response:", response.data);
@@ -40,7 +39,7 @@ export default function AddBudgetModal({ show, handleClose }) {
             <Form.Control ref={nameRef} type="text" required />
           </Form.Group>
           <div className="d-flex justify-content-end">
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" style={{ backgroundColor: '#0E2954' }}>
               Add
             </Button>
           </div>

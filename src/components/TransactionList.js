@@ -4,7 +4,6 @@ import { Modal, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import './transaction.css';
 import ExpenseUpdate from './ExpenseUpdate';
 
 const TransactionList = () => {
@@ -46,29 +45,53 @@ const TransactionList = () => {
     setShowUpdateModal(false);
   };
 
+  const listItemStyle = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    padding: '8px',
+    borderBottom: '1px solid #ccc',
+  };
+
+  const buttonStyle = {
+    marginLeft: '8px',
+    backgroundColor: '#0E2954',
+    color: '#fff',
+  };
+
   return (
     <div>
       <h2>Transactions List</h2>
-      <ul>
+      <ul style={{ listStyleType: 'none', padding: 0, margin: 0 }}>
         {expenses.map((expense) => (
-          <li key={expense.id}>
-            <strong>{expense.description}</strong> - {expense.amount} - {expense.date}
-            <Button variant="danger" onClick={() => handleDelete(expense.id)}>X</Button>
-            {/* Open the modal for updating the expense */}
+          <li key={expense.id} style={listItemStyle}>
+            <span>{expense.date}</span>
+            <span>{expense.description}</span>
+            <span>{expense.amount}</span>
             
-            <Button variant="primary" onClick={() => setShowUpdateModal(true)}>
-  <FontAwesomeIcon icon={faRefresh} /></Button>
-            {/* Render the ExpenseUpdate component within a modal if showUpdateModal is true */}
-            {showUpdateModal && (
-              <Modal show={true} onHide={() => setShowUpdateModal(false)}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Do you want to Update Record?</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <ExpenseUpdate expense={expense} onUpdate={handleUpdateExpense} />
-                </Modal.Body>
-              </Modal>
-            )}
+            <span>
+              <Button  onClick={() => handleDelete(expense.id)} 
+              style={{ backgroundColor: '#0E2954', color: '#fff' }}
+              > 
+              {/* style={buttonStyle} variant="danger" */}
+                <FontAwesomeIcon icon={faTrashAlt} />
+              </Button>
+              <Button  onClick={() => setShowUpdateModal(true)} 
+              style={{ backgroundColor: '#0E2954', color: '#fff' }}
+              >
+                {/* style={buttonStyle}variant="primary" */}
+                <FontAwesomeIcon icon={faRefresh} />
+              </Button>
+              {showUpdateModal && (
+                <Modal show={true} onHide={() => setShowUpdateModal(false)}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Do you want to Update Record?</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <ExpenseUpdate expense={expense} onUpdate={handleUpdateExpense} />
+                  </Modal.Body>
+                </Modal>
+              )}
+            </span>
           </li>
         ))}
       </ul>

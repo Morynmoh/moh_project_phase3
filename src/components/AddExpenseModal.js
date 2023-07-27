@@ -79,7 +79,7 @@ export default function AddExpenseModal({ show, handleClose, defaultBudgetId }) 
             </Form.Select>
           </Form.Group>
           <div className="d-flex justify-content-end">
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" style={{ backgroundColor: '#0E2954', color: '#fff' }}>
               Add
             </Button>
           </div>

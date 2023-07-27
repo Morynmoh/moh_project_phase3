@@ -4,13 +4,15 @@ import Home from './components/Home';
 import './App.css';
 import Signin from './components/Signin';
 import Login from './components/Login';
+import bgImg from './assets/bckgrnd.png';
 
 
 const App = () => {
   return (
     <>
     {/* <div><h1>Welcome to your Personal Transaction Tracker</h1></div> */}
-    <div className="App">
+    <div className="App" style={{ backgroundImage: `url(${bgImg})` }}>
+      
       
     <Router>
       <Routes>

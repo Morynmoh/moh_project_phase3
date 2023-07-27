@@ -70,7 +70,7 @@ const ExpenseForm = () => {
 
   return (
     <>
-      <Button onClick={handleAddExpense}>Add Expense</Button>
+      <Button onClick={handleAddExpense} style={{ backgroundColor: '#0E2954', color: '#fff' }}>Add Expense</Button>
       <Modal show={showForm} onHide={handleCloseForm}>
         <Modal.Header closeButton>
           <Modal.Title>New Expense</Modal.Title>
@@ -122,13 +122,13 @@ const ExpenseForm = () => {
               
 
             </div>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-primary" style={{ backgroundColor: '#0E2954' }}>
               Add Expense
             </button>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleCloseForm}>Close</Button>
+          <Button onClick={handleCloseForm} style={{ backgroundColor: '#0E2954' }}>Close</Button>
         </Modal.Footer>
       </Modal>
     </>

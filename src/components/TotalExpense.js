@@ -1,7 +1,7 @@
-import React from 'react';
+
 import { useBudgets } from '../contexts/BudgetsContext';
 
-const TotalExpenseCard = () => {
+const TotalExpense = () => {
   const { budgets, getBudgetExpenses } = useBudgets();
 
   // Calculate the total expense by summing up the amounts from all budgets
@@ -15,7 +15,7 @@ const TotalExpenseCard = () => {
   }, 0);
 
   return (
-    <div className="card">
+    <div className="card" style={{ backgroundColor: '#0E2954', color: '#fff' }}>
       <div className="card-body">
         <h5 className="card-title">Total Expense</h5>
         <p className="card-text">${totalExpense.toFixed(2)}</p>
@@ -24,4 +24,21 @@ const TotalExpenseCard = () => {
   );
 };
 
-export default TotalExpenseCard;
+export default TotalExpense;
+
+
+// const TotalExpense = ({ expenses }) => {
+//   // Calculate the total expense by summing up the amounts from all expenses
+//   const totalExpense = expenses.reduce((total, expense) => total + expense.amount, 0);
+
+//   return (
+//     <div className="card" style={{ backgroundColor: '#0E2954', color: '#fff' }}>
+//       <div className="card-body">
+//         <h5 className="card-title">Total Expense</h5>
+//         <p className="card-text">${totalExpense.toFixed(2)}</p>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default TotalExpense;

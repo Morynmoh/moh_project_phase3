@@ -6,7 +6,7 @@ import './expense.css';
 const AddCategory = () => {
   const [showForm, setShowForm] = useState(false);
   const [name, setName] = useState('');
-  
+
   const handleAddCategory = () => {
     setShowForm(true);
   };
@@ -22,33 +22,33 @@ const AddCategory = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    
 
-    axios.post('http://localhost:9292/categories', formData)
+    axios
+      .post('http://localhost:9292/categories', formData)
       .then((response) => {
         console.log('Response:', response.data);
         alert('Category successfully added.');
-        
         setName('');
-        
         setShowForm(false);
       })
       .catch((error) => {
         console.error('Error:', error);
-        alert("Category not added!!")
+        alert('Category not added!!');
       });
   };
 
   return (
     <>
-      <Button onClick={handleAddCategory}>Add Category</Button>
+      <Button onClick={handleAddCategory} style={{ backgroundColor: '#0E2954' }}>
+        Add Category
+      </Button>
       <Modal show={showForm} onHide={handleCloseForm}>
         <Modal.Header closeButton>
           <Modal.Title>New Category</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit} className="expense-form">
-             <div className="form-group">
+            <div className="form-group">
               <label htmlFor="description">Name:</label>
               <input
                 type="text"
@@ -58,14 +58,14 @@ const AddCategory = () => {
                 className="form-control"
               />
             </div>
-                       
-            <button type="submit" className="btn btn-primary">
+
+            <Button type="submit" style={{ backgroundColor: '#0E2954', color: '#fff' }}>
               Add Category
-            </button>
+            </Button>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleCloseForm}>Close</Button>
+          <Button onClick={handleCloseForm} style={{ backgroundColor: '#0E2954', color: '#fff' }}>Close</Button>
         </Modal.Footer>
       </Modal>
     </>
@@ -73,4 +73,3 @@ const AddCategory = () => {
 };
 
 export default AddCategory;
-
