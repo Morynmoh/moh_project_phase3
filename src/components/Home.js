@@ -13,6 +13,7 @@ import ExpenseForm from "./ExpenseForm";
 import AddCategory from "./AddCategory";
 import TransactionList from "./TransactionList";
 
+
 function Home() {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false)
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false)
@@ -99,6 +100,11 @@ function Home() {
       <div>
         <h1>Transaction List</h1>
         <TransactionList />
+
+        
+      </div>
+      <div>
+      
       </div>
     </div>
     </>
