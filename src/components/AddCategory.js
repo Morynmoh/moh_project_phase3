@@ -15,12 +15,14 @@ const AddCategory = () => {
     setShowForm(false);
   };
 
+  const formData = {
+    name
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const formData = {
-      name
-    };
+    console.log(formData);
+    
 
     axios.post('http://localhost:9292/categories', formData)
       .then((response) => {

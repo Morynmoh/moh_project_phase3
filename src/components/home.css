@@ -1,0 +1,13 @@
+.add-category-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-category-container h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+  }

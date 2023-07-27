@@ -6,32 +6,31 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Applic.css';
 
+
 const Signin = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleRegister = async () => {
+const createUser = async () => {
+  const response = await axios.post('http://localhost:9292/register', {
+        user_name: userName,
+        password: password,
+        
+      });
+      console.log(response.data);
+    }
+
+  const handleRegister = () => {
     if (userName === '' || password === '') {
       alert('Please enter a username and password.');
       return;
     }
   
-    try {
-      const response = await axios.post('http://localhost:9292/signin', {
-        user_name: userName,
-        password: password,
-      });
-      
-      console.log(response.data);
-      alert("User created successfully");
+    createUser() 
       navigate('/Login');
-    } catch (error) {
-      console.error(error);
-      alert("User not created succesfully");
-    }
+    
   };
-
 
   return (
     <section>
@@ -40,7 +39,7 @@ const Signin = () => {
                 <h2>Register User</h2>
                 <span>register and enjoy the service</span>
 
-                <form id='form' className='flex flex-col' >
+                <form id='form' className='flex flex-col'onSubmit={handleRegister}>
                     <input 
                     type="text" 
                     placeholder='username' 
@@ -52,16 +51,17 @@ const Signin = () => {
                     type="password" 
                     placeholder='password' 
                     value={password}
+                    minLength={8}
         
                     onChange={(e) => setPassword(e.target.value)}
                     required
                     />
                     
-                    <button className='btn'onClick={handleRegister}>Register</button>
+                    <button className='btn' type="submit">Register</button>
                     
                     <h6>If you already have an account, you can Login</h6>
                     <Link to='/Login' className='btn'>Go To Login</Link>
-                    {/* onClick={() => navigate('/Login')} */}
+                    
                     </form>
 
             </div>

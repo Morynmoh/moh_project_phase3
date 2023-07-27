@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import axios from 'axios';
 import './expense.css';
@@ -8,22 +8,48 @@ const ExpenseForm = () => {
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
+  const [category, setCategory] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState(0)
 
   const handleAddExpense = () => {
     setShowForm(true);
+  };
+
+  useEffect(() => {
+    fetchCategories()
+  }, [])
+
+  const fetchCategories = () => {
+    
+    axios.get('http://localhost:9292/categories')
+      .then((response) => {
+        console.log(response.data);
+        setCategory(response.data)
+        console.log(category)
+      })
+      .catch((error) => {
+        console.error('Error fetching categories:', error);
+      });
   };
 
   const handleCloseForm = () => {
     setShowForm(false);
   };
 
+  const handleSelectChange = (e) => {
+    setSelectedCategory(e.target.value)
+    console.log(selectedCategory)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const formData = {
-      description,
-      date,
-      amount,
+      description: description,
+      date: date,
+      amount: amount,
+      category_id: selectedCategory,
+      user_id: 1
     };
 
     axios.post('http://localhost:9292/expenses', formData)
@@ -81,6 +107,20 @@ const ExpenseForm = () => {
                 onChange={(e) => setAmount(e.target.value)}
                 className="form-control"
               />
+            </div>
+            <div>
+              <label>Category</label>
+              <select id="category" value={selectedCategory}
+              onChange={handleSelectChange}
+              >
+                {category && category.map((cat)=>((
+                  <option key={cat.id} value={cat.id}>{cat.name}</option>
+
+                )))}
+                
+              </select>
+              
+
             </div>
             <button type="submit" className="btn btn-primary">
               Add Expense

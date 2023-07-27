@@ -10,28 +10,25 @@ const Login = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  // const history = useHistory();
 
-  const handleLogin = async () => {
+const logUser = async () => {
+  const response = await axios.post('http://localhost:9292/login', {
+        user_name: userName,
+        password: password,
+      });
+      console.log(response.data);
+  }
+
+  const handleLogin = () => {
     if (userName === '' || password === '') {
       alert('Please enter a username and password.');
       return;
     }
 
-    try {
-      const response = await axios.post('http://localhost:9292/login', {
-        user_name: userName,
-        password: password,
-      });
-      // If the user is logged in successfully, you can handle the response here
-      console.log(response.data);
-      alert("User found and logged in successfully")
+    logUser()
       navigate('/Home');
-      // history.push('/Login');
-    } catch (error) {
-      console.error(error);
-      alert("User not found")
-    }
+      
+    
   };
 
   return (
@@ -40,7 +37,9 @@ const Login = () => {
             <div className="col-1">
                 <h2>Login</h2>
                 
-                <form id='form' className='flex flex-col' >
+                <form id='form' className='flex flex-col' 
+                onSubmit={handleLogin}
+                >
                     <input 
                     type="text" 
                     placeholder='username' 
@@ -53,10 +52,11 @@ const Login = () => {
                     placeholder='password' 
                     value={password}
                     required
+                    minLength={8}
                     onChange={(e) => setPassword(e.target.value)}
                     />
                     
-                    <button className='btn'onClick={handleLogin}>Log In</button>
+                    <button className='btn'type="submit">Log In</button>
                     <h6>If you have not registered</h6>
                     <button className='btn' onClick={() => navigate('/')}>Go To Register</button>
                 </form>
