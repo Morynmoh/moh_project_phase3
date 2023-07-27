@@ -17,6 +17,8 @@ FrontEnd -> `git clone git@github.com:Morynmoh/moh_project_phase3.git`
 BackEnd -> `git clone git@github.com:Morynmoh/moh_project_phase3_backend.git`
 Live Site link: `https://transaction-checker.vercel.app/`
 
+ScreenShot -> `'./assets/Front End Screenshot.png'`
+
 # Change into the project directory:
 `cd transaction-tracker`
 
