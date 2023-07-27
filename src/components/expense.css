@@ -1,4 +1,4 @@
-/* Styles for the form container */
+
 .expense-form-container {
     display: flex;
     flex-direction: column;
@@ -8,7 +8,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  /* Styles for form inputs */
+
   .expense-form-container input {
     width: 100%;
     padding: 10px;
@@ -18,7 +18,7 @@
     font-size: 16px;
   }
   
-  /* Styles for form submit button */
+
   .expense-form-container button {
     padding: 10px;
     background-color: #007bff;
@@ -33,12 +33,12 @@
     background-color: #0056b3;
   }
   
-  /* Styles for modal backdrop */
+
   .modal-backdrop {
     background-color: rgba(0, 0, 0, 0.5) !important;
   }
   
-  /* Styles for modal content */
+
   .modal-content {
     border: none;
     border-radius: 10px;

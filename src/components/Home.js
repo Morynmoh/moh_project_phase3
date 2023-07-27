@@ -3,7 +3,7 @@ import './home.css';
 import ExpenseForm from "./ExpenseForm";
 import AddCategory from "./AddCategory";
 import TransactionList from "./TransactionList";
-import React, { useEffect } from 'react';
+import React from 'react';
 
 
 function Home() {
@@ -19,13 +19,13 @@ function Home() {
   const containerStyle = {
     backgroundColor: '#EEEDED',
     padding: '20px',
-    display: 'inline-block', // Set display to flex
-    flexWrap: 'wrap', // Allow flex items to wrap if needed
-    justifyContent: 'space-between', // Space evenly between flex items
+    display: 'inline-block', 
+    flexWrap: 'wrap', 
+    justifyContent: 'space-between', 
   };
   const columnStyle = {
-    flex: '0 0 48%', // 48% width for each column
-    marginBottom: '20px', // Add some spacing between columns
+    flex: '0 0 48%', 
+    marginBottom: '20px', 
   };
 
   return (
@@ -44,12 +44,7 @@ function Home() {
         <div style={{ width: '100%' }}>
           <TransactionList />
         </div>
-        {/* <div style={{ width: '100%' }}>
-          <TotalExpense />
-        </div> */}
-        {/* <div style={{ width: '100%' }}>
-          <TotalExpenses2 />
-        </div> */}
+      
       </div>
     </>
   )

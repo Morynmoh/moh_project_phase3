@@ -29,7 +29,7 @@ const logUser = async () => {
 
     logUser()
     navigate('/Home', { state: { userName: userName } });
-      // navigate('/Home');
+
       
       
   };

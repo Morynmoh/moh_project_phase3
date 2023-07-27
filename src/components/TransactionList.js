@@ -5,12 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import ExpenseUpdate from './ExpenseUpdate';
-import ExpenseForm from './ExpenseForm'; // Import the ExpenseForm component
+import ExpenseForm from './ExpenseForm'; 
 
 const TransactionList = () => {
   const [expenses, setExpenses] = useState([]);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
-  const [showAddExpenseModal, setShowAddExpenseModal] = useState(false); // State for showing the add expense modal
+  const [showAddExpenseModal, setShowAddExpenseModal] = useState(false); 
 
   useEffect(() => {
     fetchExpenses();
@@ -39,22 +39,22 @@ const TransactionList = () => {
       });
   };
 
-  // Function to handle updating the expense in the parent component's state
+  
   const handleUpdateExpense = (updatedExpense) => {
-    // Handle the updated expense here, e.g., update the parent component's state
+    
     console.log('Updated Expense:', updatedExpense);
-    // Close the modal after successful update
+    
     setShowUpdateModal(false);
   };
 
-  // Function to handle adding a new expense to the list
+  
   const handleAddExpense = (newExpense) => {
     axios
       .post('http://localhost:9292/expenses', newExpense)
       .then((response) => {
         console.log('Expense added successfully:', response.data);
-        fetchExpenses(); // Fetch the updated list of expenses after adding
-        setShowAddExpenseModal(false); // Close the modal after successful add
+        fetchExpenses(); 
+        setShowAddExpenseModal(false); 
       })
       .catch((error) => {
         console.error('Error adding expense:', error);
@@ -80,19 +80,20 @@ const TransactionList = () => {
   const listItemStyle = {
     display: 'flex',
     justifyContent: 'space-between',
-    padding: '12px', // Increase padding to create more space
+    padding: '12px', 
+    borderBottom: '1px solid #ccc',
     
   };
 
   const listItemStyle1 = {
     display: 'flex',
     justifyContent: 'space-between',
-    padding: '12px', // Increase padding to create more space
+    padding: '12px', 
     borderBottom: '1px solid #ccc',
-    fontSize: '20px', // Increase font size
-    backgroundColor: '#0E2954', // Background color
-    color: '#fff', // Text color
-    width: '100%', // Expand to full width
+    fontSize: '20px', 
+    backgroundColor: '#0E2954', 
+    color: '#fff', 
+    width: '100%', 
   };
 
 
@@ -130,7 +131,7 @@ const TransactionList = () => {
             </span>
           </li>
         ))}
-        {/* Total row */}
+        
         <li style={listItemStyle1}>
           <span></span>
           <span><strong>Total:</strong></span>
@@ -140,7 +141,7 @@ const TransactionList = () => {
 
       </ul>
 
-      {/* Render the ExpenseForm component */}
+      
       <ExpenseForm onAddExpense={handleAddExpense} show={showAddExpenseModal} onHide={() => setShowAddExpenseModal(false)} />
     </div>
   );

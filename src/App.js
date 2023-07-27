@@ -10,7 +10,7 @@ import bgImg from './assets/bckgrnd.png';
 const App = () => {
   return (
     <>
-    {/* <div><h1>Welcome to your Personal Transaction Tracker</h1></div> */}
+    
     <div className="App" style={{ backgroundImage: `url(${bgImg})` }}>
       
       

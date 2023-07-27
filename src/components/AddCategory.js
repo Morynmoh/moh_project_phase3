@@ -44,7 +44,7 @@ const AddCategory = () => {
       </Button>
       <Modal show={showForm} onHide={handleCloseForm}>
         <Modal.Header closeButton>
-          <Modal.Title>New Category</Modal.Title>
+          <Modal.Title>Add New Category</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit} className="expense-form">
