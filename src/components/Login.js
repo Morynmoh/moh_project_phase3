@@ -3,13 +3,15 @@ import bgImg from '../assets/joanna-kosinska-LAaSoL0LrYs-unsplash.jpg';
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-// import { useHistory } from 'react-router-dom';
+
 import './Applic.css';
 
 const Login = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
+  
 
 const logUser = async () => {
   const response = await axios.post('http://localhost:9292/login', {
@@ -26,9 +28,10 @@ const logUser = async () => {
     }
 
     logUser()
-      navigate('/Home');
+    navigate('/Home', { state: { userName: userName } });
+      // navigate('/Home');
       
-    
+      
   };
 
   return (
