@@ -14,7 +14,7 @@ const TransactionList = () => {
 
   useEffect(() => {
     fetchExpenses();
-  }, []);
+  }, [expenses]);
 
   const handleDelete = (id) => {
     axios
