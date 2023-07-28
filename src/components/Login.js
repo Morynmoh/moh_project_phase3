@@ -1,12 +1,10 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
-
   const navigate = useNavigate();
 
   const logUser = async () => {
@@ -14,26 +12,17 @@ const Login = () => {
       user_name: userName,
       password: password,
     });
-    if (response.status === 404) {
-      const error = await response.json();
-      alert('Incorrect user_name or password.');
-    } else {
-      logUser();
-      navigate('/Home', { state: { userName: userName } });
-    }
+    console.log(response.data);
   };
 
-  const handleLogin = async () => {
+  const handleLogin = () => {
     if (userName === '' || password === '') {
       alert('Please enter a username and password.');
       return;
     }
 
-    try {
-      await logUser();
-    } catch (error) {
-      alert('Incorrect user_name or password.');
-    }
+    logUser();
+    navigate('/Home', { state: { userName: userName } });
   };
 
   const buttonStyle = {
@@ -79,7 +68,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
-
-
