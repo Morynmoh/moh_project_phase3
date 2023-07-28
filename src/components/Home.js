@@ -1,5 +1,4 @@
-import { useLocation } from 'react-router-dom';
-// import './home.css';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ExpenseForm from "./ExpenseForm";
 import AddCategory from "./AddCategory";
 import TransactionList from "./TransactionList";
@@ -8,7 +7,12 @@ import React from 'react';
 
 function Home() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { userName } = location.state || {};
+
+  const handleLogout = () => {
+    navigate('/Login');
+  };
 
   const welcomeStyle = {
     fontSize: '24px',
@@ -45,6 +49,7 @@ function Home() {
         <div style={{ width: '100%' }}>
           <TransactionList />
         </div>
+        <button onClick={handleLogout}>Logout</button>
       
       </div>
     </>

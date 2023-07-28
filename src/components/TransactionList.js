@@ -61,14 +61,6 @@ const TransactionList = () => {
       });
   };
 
-  
-  const buttonStyle = {
-    marginLeft: '8px',
-    backgroundColor: '#0E2954',
-    color: '#fff',
-  };
-  
-  
   const calculateTotalAmount = () => {
     return expenses.reduce((total, expense) => total + parseFloat(expense.amount), 0);
   };

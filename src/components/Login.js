@@ -1,5 +1,4 @@
 import React from 'react';
-import bgImg from '../assets/joanna-kosinska-LAaSoL0LrYs-unsplash.jpg';
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
+
   const navigate = useNavigate();
 
   const logUser = async () => {
@@ -14,17 +14,26 @@ const Login = () => {
       user_name: userName,
       password: password,
     });
-    console.log(response.data);
+    if (response.status === 404) {
+      const error = await response.json();
+      alert('Incorrect user_name or password.');
+    } else {
+      logUser();
+      navigate('/Home', { state: { userName: userName } });
+    }
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (userName === '' || password === '') {
       alert('Please enter a username and password.');
       return;
     }
 
-    logUser();
-    navigate('/Home', { state: { userName: userName } });
+    try {
+      await logUser();
+    } catch (error) {
+      alert('Incorrect user_name or password.');
+    }
   };
 
   const buttonStyle = {
@@ -59,6 +68,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             style={{ margin: '10px 0', padding: '8px', width: '100%', boxSizing: 'border-box' }}
           />
+          
           <button className='btn' type="submit" style={buttonStyle}>Log In</button>
           <h6 style={{ marginTop: '10px' }}>If you have not registered</h6>
           <button className='btn' onClick={() => navigate('/')} style={buttonStyle}>Go To Register</button>
@@ -66,6 +76,10 @@ const Login = () => {
       </div>
     </section>
   )
-}
+};
 
 export default Login;
+
+
+
+
